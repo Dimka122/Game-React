@@ -15,7 +15,7 @@ const Canvas = () => {
         <Sky/>
         <Ground/>
         <CannonPipe rotation={45}/>
-      <CannonBase/>
+        <CannonBase/>
     </svg>
   );
 };
