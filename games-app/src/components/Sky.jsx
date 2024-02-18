@@ -16,3 +16,4 @@ const Sky = () => {
     />
   );
 };
+export default Sky;
