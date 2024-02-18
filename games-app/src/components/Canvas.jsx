@@ -9,9 +9,12 @@ import CurrentScore from './CurrentScore';
 import FlyingObject from './FlyingObject';
 import Heart from './Heart';
 import StartGame from './StartGame';
+import Title from './Title';
 
+const gameHeight=1200;
 const Canvas = (props) => {
-  const viewBox = [window.innerWidth / -2, 100 - window.innerHeight, window.innerWidth, window.innerHeight];
+    //const gameHeight = 1200;
+    const viewBox = [window.innerWidth / -2, 100 - gameHeight, window.innerWidth, gameHeight];
   return (
     <svg
       id="aliens-go-home-canvas"
@@ -34,6 +37,7 @@ const Canvas = (props) => {
         <FlyingObject position={{x: 150, y: -300}}/>
         <Heart position={{x: -300, y: 35}} />
         <StartGame onClick={() => console.log('Aliens, Go Home!')} />
+        <Title/>
     </svg>
   );
 };
