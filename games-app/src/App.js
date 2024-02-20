@@ -5,14 +5,17 @@ import Canvas from './components/Canvas';
 import * as Auth0 from 'auth0-web';
 
 Auth0.configure({
-  domain: 'YOUR_AUTH0_DOMAIN', // домен
-  clientID: 'YOUR_AUTH0_CLIENT_ID', // клиент id
+  domain: 'games-app.uk.auth0.com', // домен
+  clientID: 'O0SPAEmWvDjA6KQb64Zm29pcftEXr1kt', // клиент id
   redirectUri: 'http://localhost:3000/',
   responseType: 'token id_token',
   scope: 'openid profile manage:points',
 });
 
 class App extends Component {
+  constructor(props) {
+    super(props);}
+
   componentDidMount() {
     const self = this;
 

@@ -1,4 +1,4 @@
-import { MOVE_OBJECTS,START_GAME } from '../actions';
+import {LEADERBOARD_LOADED, LOGGED_IN, MOVE_OBJECTS,START_GAME } from '../actions';
 import moveObjects from './moveObjects';
 import startGame from './startGame';
 
@@ -8,6 +8,8 @@ const initialGameState = {
     lives: 3,
     flyingObjects: [],
     lastObjectCreatedAt: new Date(),
+    currentPlayer: null,
+    players: null,
   };
 const initialState = {
   angle: 45,
