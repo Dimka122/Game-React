@@ -17,16 +17,7 @@ import { signIn } from 'auth0-web';
 const Canvas = (props) => {
     const gameHeight = 1200;
     const viewBox = [window.innerWidth / -2, 100 - gameHeight, window.innerWidth, gameHeight];
-    const leaderboard = [
-        { id: 'd4', maxScore: 82, name: 'Ado Kukic', picture: 'https://twitter.com/KukicAdo/profile_image', },
-        { id: 'a1', maxScore: 235, name: 'Bruno Krebs', picture: 'https://twitter.com/brunoskrebs/profile_image', },
-        { id: 'c3', maxScore: 99, name: 'Diego Poza', picture: 'https://twitter.com/diegopoza/profile_image', },
-        { id: 'b2', maxScore: 129, name: 'Jeana Tahnk', picture: 'https://twitter.com/jeanatahnk/profile_image', },
-        { id: 'e5', maxScore: 34, name: 'Jenny Obrien', picture: 'https://twitter.com/jenny_obrien/profile_image', },
-        { id: 'f6', maxScore: 153, name: 'Kim Maida', picture: 'https://twitter.com/KimMaida/profile_image', },
-        { id: 'g7', maxScore: 55, name: 'Luke Oliff', picture: 'https://twitter.com/mroliff/profile_image', },
-        { id: 'h8', maxScore: 146, name: 'Sebastián Peyrott', picture: 'https://twitter.com/speyrott/profile_image', },
-      ];
+    
   return (
     <svg
       id="aliens-go-home-canvas"
@@ -48,7 +39,7 @@ const Canvas = (props) => {
         <g>
           <StartGame onClick={() => props.startGame()} />
           <Title />
-          <Leaderboard currentPlayer={leaderboard[6]} authenticate={signIn} leaderboard={leaderboard} />
+          <Leaderboard currentPlayer={props.currentPlayer} authenticate={signIn} leaderboard={props.players} />
         </g>
         }
 
@@ -78,6 +69,22 @@ Canvas.propTypes = {
     }).isRequired,
     trackMouse: PropTypes.func.isRequired,
     startGame: PropTypes.func.isRequired,
-  };
+    currentPlayer: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        maxScore: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+      }),
+      players: PropTypes.arrayOf(PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        maxScore: PropTypes.number.isRequired,
+        name: PropTypes.string.isRequired,
+        picture: PropTypes.string.isRequired,
+      })),
+    };
+     Canvas.defaultProps = {
+        currentPlayer: null,
+        players: null,
+    };
 
 export default Canvas;
