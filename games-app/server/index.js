@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
 
 const client = jwksClient({
-  jwksUri: 'https://games-app.uk.auth0.com/.well-known/jwks.json' // ваш домен
+  jwksUri: 'https://dev-f3wrtbv2ftyttaqm.us.auth0.com/.well-known/jwks.json' // ваш домен
 });
 
 const players = [

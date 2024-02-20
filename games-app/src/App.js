@@ -6,7 +6,7 @@ import * as Auth0 from 'auth0-web';
 import io from 'socket.io-client';
 
 Auth0.configure({
-  domain: 'games-app.uk.auth0.com', // домен
+  domain: 'dev-f3wrtbv2ftyttaqm.us.auth0.com', // домен
   clientID: 'O0SPAEmWvDjA6KQb64Zm29pcftEXr1kt', // клиент id
   redirectUri: 'http://localhost:3000/',
   responseType: 'token id_token',
@@ -16,7 +16,11 @@ Auth0.configure({
 
 class App extends Component {
   constructor(props) {
-    super(props);}
+    super(props);
+    this.shoot = this.shoot.bind(this);
+    this.socket = null;
+    this.currentPlayer = null;
+  }
 
   componentDidMount() {
     const self = this;
