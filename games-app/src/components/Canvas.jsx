@@ -7,7 +7,7 @@ import CannonBase from './CannonBase';
 import CannonBall from './CannonBall';
 import CurrentScore from './CurrentScore';
 import FlyingObject from './FlyingObject';
-//import Heart from './Heart';
+import Heart from './Heart';
 import StartGame from './StartGame';
 import Title from './Title';
 //import Login from './Login';
@@ -17,6 +17,15 @@ import { signIn } from 'auth0-web';
 const Canvas = (props) => {
     const gameHeight = 1200;
     const viewBox = [window.innerWidth / -2, 100 - gameHeight, window.innerWidth, gameHeight];
+
+    const lives = [];
+  for (let i = 0; i < props.gameState.lives; i++) {
+    const heartPosition = {
+      x: -180 - (i * 70),
+      y: 35
+    };
+    lives.push(<Heart key={i} position={heartPosition}/>);
+  }
     
   return (
     <svg
@@ -48,6 +57,7 @@ const Canvas = (props) => {
           <StartGame onClick={() => props.startGame()} />
           <Title />
           <Leaderboard currentPlayer={props.currentPlayer} authenticate={signIn} leaderboard={props.players} />
+          
         </g>
         }
 
@@ -58,6 +68,7 @@ const Canvas = (props) => {
           position={flyingObject.position}
         />
         ))}
+        {lives}
     </svg>
   );
 };
