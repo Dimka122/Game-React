@@ -2,22 +2,22 @@ import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import { getCanvasPosition } from './utils/formulas';
 import Canvas from './components/Canvas';
-import * as Auth0 from 'auth0-web';
-import io from 'socket.io-client';
+//import * as Auth0 from 'auth0-web';
+//import io from 'socket.io-client';
 
-Auth0.configure({
+ /*Auth0.configure({
   domain: 'dev-f3wrtbv2ftyttaqm.us.auth0.com', // домен
   clientID: 'O0SPAEmWvDjA6KQb64Zm29pcftEXr1kt', // клиент id
   redirectUri: 'http://localhost:3000/',
   responseType: 'token id_token',
   scope: 'openid profile manage:points',
   audience: 'https://aliens-go-home.digituz.com.br',
-});
+});*/
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.shoot = this.shoot.bind(this);
+    //this.shoot = this.shoot.bind(this);
     this.socket = null;
     this.currentPlayer = null;
   }
@@ -25,9 +25,9 @@ class App extends Component {
   componentDidMount() {
     const self = this;
 
-    Auth0.handleAuthCallback();
+    //Auth0.handleAuthCallback();
 
-    Auth0.subscribe((auth) => {
+    /*Auth0.subscribe((auth) => {
       if (!auth) return;
 
       const playerProfile = Auth0.getProfile();
@@ -65,7 +65,7 @@ class App extends Component {
           });
         }, 5000);
       });
-    });
+    });*/
 
     setInterval(() => {
         self.props.moveObjects(self.canvasMousePosition);

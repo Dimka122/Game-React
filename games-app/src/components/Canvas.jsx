@@ -34,7 +34,7 @@ const Canvas = (props) => {
         <Ground/>
         <CannonPipe rotation={props.angle}/>
         <CannonBase/>
-        <CurrentScore score={15}/>
+        <CurrentScore score={0}/>
         { ! props.gameState.started &&
         <g>
           <StartGame onClick={() => props.startGame()} />
