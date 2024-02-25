@@ -17,17 +17,17 @@ import Canvas from './components/Canvas';
 class App extends Component {
   constructor(props) {
     super(props);
-    //this.shoot = this.shoot.bind(this);
+    this.shoot = this.shoot.bind(this);
     this.socket = null;
     this.currentPlayer = null;
   }
 
   componentDidMount() {
     const self = this;
-
+/*
     //Auth0.handleAuthCallback();
 
-    /*Auth0.subscribe((auth) => {
+    Auth0.subscribe((auth) => {
       if (!auth) return;
 
       const playerProfile = Auth0.getProfile();
@@ -67,6 +67,7 @@ class App extends Component {
       });
     });*/
 
+
     setInterval(() => {
         self.props.moveObjects(self.canvasMousePosition);
     }, 10);
@@ -82,6 +83,10 @@ class App extends Component {
     this.canvasMousePosition = getCanvasPosition(event);
   }
 
+  shoot() {
+    this.props.shoot(this.canvasMousePosition);
+  }
+
   render() {
     return (
       <Canvas
@@ -91,6 +96,7 @@ class App extends Component {
         players={this.props.players}
         startGame={this.props.startGame}
         trackMouse={event => (this.trackMouse(event))}
+        shoot={this.shoot}
       />
     );
   }
@@ -111,6 +117,7 @@ App.propTypes = {
     })).isRequired,
   moveObjects: PropTypes.func.isRequired}),
   startGame: PropTypes.func.isRequired,
+  shoot: PropTypes.func.isRequired,
   currentPlayer: PropTypes.shape({
     id: PropTypes.string.isRequired,
     maxScore: PropTypes.number.isRequired,
