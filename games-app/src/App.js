@@ -5,8 +5,10 @@ import Canvas from './components/Canvas';
 //import * as Auth0 from 'auth0-web';
 //import io from 'socket.io-client';
 
+
  /*Auth0.configure({
-  domain: 'dev-f3wrtbv2ftyttaqm.us.auth0.com', // домен
+  //domain: 'dev-f3wrtbv2ftyttaqm.us.auth0.com', // домен
+  domain:'https://dev-f3wrtbv2ftyttaqm.us.auth0.com/.well-known/jwks.json',
   clientID: 'O0SPAEmWvDjA6KQb64Zm29pcftEXr1kt', // клиент id
   redirectUri: 'http://localhost:3000/',
   responseType: 'token id_token',
@@ -78,6 +80,60 @@ class App extends Component {
     };
     window.onresize();
   }
+
+ /* const self = this;
+
+  Auth0.handleAuthCallback();
+
+  Auth0.subscribe((auth) => {
+    if (!auth) return;
+
+    self.playerProfile = Auth0.getProfile();
+    self.currentPlayer = {
+      id: self.playerProfile.sub,
+      maxScore: 0,
+      name: self.playerProfile.name,
+      picture: self.playerProfile.picture,
+    };
+
+    self.props.loggedIn(self.currentPlayer);
+
+    self.socket = io('http://localhost:3001', {
+      query: `token=${Auth0.getAccessToken()}`,
+    });
+
+    self.socket.on('players', (players) => {
+      self.props.leaderboardLoaded(players);
+      players.forEach((player) => {
+        if (player.id === self.currentPlayer.id) {
+          self.currentPlayer.maxScore = player.maxScore;
+        }
+      });
+    });
+  });
+
+  setInterval(() => {
+    self.props.moveObjects(self.canvasMousePosition);
+  }, 10);
+
+  window.onresize = () => {
+    const cnv = document.getElementById('aliens-go-home-canvas');
+    cnv.style.width = `${window.innerWidth}px`;
+    cnv.style.height = `${window.innerHeight}px`;
+  };
+  window.onresize();
+}
+
+componentWillReceiveProps(nextProps) {
+  if (!nextProps.gameState.started && this.props.gameState.started) {
+    if (this.currentPlayer.maxScore < this.props.gameState.kills) {
+      this.socket.emit('new-max-score', {
+        ...this.currentPlayer,
+        maxScore: this.props.gameState.kills,
+      });
+    }
+  }
+}*/
 
   trackMouse(event) {
     this.canvasMousePosition = getCanvasPosition(event);
